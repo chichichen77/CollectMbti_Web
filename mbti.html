@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <!-- <meta name="viewport" content="width=device-width, intial-scale=1.0"> -->
+ <title>mbti測驗</title>
+</head>
+<body style="background-color:#f7f7f7;">
+ <center> 
+        <div style="font-size: 80px;font-family:微軟正黑體;font-weight: 300;padding-top:5%;"> 
+          <!-- MBTI心理測驗 -->
+     </div> 
+     <div id="question" style="font-size: 45px; font-family:微軟正黑體; padding-top:1%; font-weight:bold;">
+     電話響的時候你會：
+     </div>
+    
+    <div style="width: 60%; padding-left: 12%; padding-top: 5%;">
+     <button id="abutton" style="padding-top:1% ;width: 30%; height:50vh;float:left;font-family:微軟正黑體; font-size: 35px; background-color:#11B6FF; color: #FFFFFF; font-weight:bold; border-color: #FFFFFF; border-radius: 20px; margin-left: 40px;"      onclick="abutton()">
+         趕快去接
+    </button> 
+    <button id="bbutton" style="padding-top: 1%; width:30%; height:50vh; font-family:微軟正黑體; font-size: 35px; background-color:#ED7161;  color: #FFFFFF; font-weight:bold; border-color: #FFFFFF; border-radius: 20px; margin-right: 150px;"
+      onclick="bbutton()">
+         希望別人去接
+    </button>
+    </div>
+    </center>
+  </body>
+    <script> 
+     var answer=[];
+     var q=['你認為你擅長：','你覺得哪個比較不好：','和別人相處時你：','哪個讓你感到更自在：','工作場所髒亂時你會：','你習慣：','排隊時你通常：','你認為你：','你對哪個比較有興趣：','你做決定時通常依照：','衡量別人時你通常：','你比較喜歡：','你喜歡：','在派對你通常：','你傾向：','你喜歡作家：','哪一個更吸引你：','如果你會讓人失望難過，你通常是：','你希望你的行程在工作上是：','你更喜歡：','和陌生人互動會使你：','你認為事實：','你發現有遠見的或是理論家：','在熱烈的討論中：','何者更好：','你在工作中更傾向：','你感到更舒適在：','你更傾向：','你認為常識：','你認為孩子們經常不：','當你負責管理別人時，你傾向於：','你更常是個：','你是否傾向於：','在多數情況下，你更：','你認為自己是：','你更經常是一個：','你說話偏向於：','哪句話更像是一句讚美：','哪個更能支配你：','完成工作後，你喜歡：','你工作喜歡：','你是哪種人：','你傾向於把所說的話：','你更經常看到：','當一個怎樣的人比較糟糕：','在艱難的環境中你時常：','你傾向於選擇：','你傾向於：','工作的時候你傾向於：','你更傾向於相信：','你更傾向於：','你覺得你是一個：','你如何看待自己：','你通常如何處理事物：','你會如何形容你自己：','你認為你自己：','你覺得自己：','你更加喜歡：','哪個較符合你：','你傾向被哪個情況左右：','你覺得自己：','你大多數偏好：','你傾向於成為：','你更喜歡哪種故事：','你容易傾向於：','你更希望自己是哪一個：','基本上你認為自己：','你比較傾向於注意：','你通常比較：'];
+     var achoice=['觀察','做白日夢','嚴格','批判性判斷','花時間整理','依照想法快速決定','和人聊天','腳踏實地','實際的','數據','客觀理性','簽署、蓋章和交付完成契約','結果','跟陌生人互動','求證','有話直說','思想一致','坦白地說','預定地、安排好的','最終的、不可改變的聲明','充滿活力','不言而喻、不必說就可以明白','有點煩人','堅持你的立場','公正的、正義的','指出錯誤','決定事情之後','直接說出你的想法','是可靠的','使自己變有用','堅決而嚴格','冷靜的人','馬上決定一種結果','慎重考慮多於衝動','外向的人','實際的人','細節多於概括','一位有邏輯的人','你的想法','把待辦的工作也都做完','在期限前完成','比較健談的人','字面化','眼前的東西','容易被說服的人','過於冷漠','比較謹慎','匆忙而非悠閒','和同事有好的交際','你的經驗','事事求是','現實的人','講道理的','安定且決定好的','堅定自我的','好的健談者','堅守現實的','基本的','較有同情心','有說服力的證據','較內向的','確保事情都安排好','容易親近的','動作與冒險','利用他人的','有意志的力量','臉皮厚','沒有調理和次序','不異想天開的'];
+     var bchoice=['自我反省','墨守成規','溫和','價值觀判斷','忍耐','審慎思考','忙公事','天馬行空','未知的','隨心所欲','主觀','握手協議','過程','跟少數朋友交談','推測','使用隱喻和象徵主義','和諧關係','委婉地說','不定期的','暫定、初步的聲明','含蓄克制','說明其中原則','相當迷人','尋找共同立場','仁慈的、寬容的','試圖取悅他人','決定事情之前','仔細留心聽他人意見','未必正確','充分發揮他們的想像力','寬容而寬大','熱心的人','探索更多可能性','衝動多於慎重考慮','內向的人','異想天開的人','概括多於細節','一位多愁善感的人','你的感受','做其他事情','無論何時做都可以','不太說話的人','形象化','只能想像的事物','頑固的人','太富有同情心','有點衝動','悠閒而非匆忙','更專注於自己','你的想法','情緒化','心腸柔軟的人','忠實的','先暫定的','隨和的','好的聆聽者','有生動的想像力','富有色彩的','較少同情心','感人的訴求','較外放的','讓事情自然發生','對人有點保留的','幻想與英雄主義的','認同他人的','有情感的力量','臉皮薄','有改變的機會','較異想天開的'];
+  var question=document.getElementById("question");
+  var ab=document.getElementById("abutton");
+  var bb=document.getElementById("bbutton");
+  console.log(q.length);
+  console.log(achoice.length);
+  console.log(bchoice.length);
+  var i=0;
+  
+  function abutton(){
+    answer.push("a");
+    if(answer.length==70){
+      sendresult();
+    }
+    if(i<69){
+      question.innerHTML=q[i];
+      ab.innerHTML=achoice[i];
+      bb.innerHTML=bchoice[i];
+    }
+    i+=1;
+  }
+  function bbutton(){
+    answer.push("b");
+    if(answer.length==70){
+      sendresult();
+    }
+    if(i<69){
+      question.innerHTML=q[i];
+      ab.innerHTML=achoice[i];
+      bb.innerHTML=bchoice[i];
+    }
+    i+=1;
+  }
+  function sendresult(){
+    console.log(answer)
+   $.ajax({
+    type:"POST",
+    url:"php/savembti.php",
+    data:{"answer":answer,
+          "username":username,
+     },
+    success:function(data){
+      // window.location = "main.html";
+      alert('註冊成功！你的MBTI人格是:'+data+'註冊成功!快來跟我聊聊天吧!!!');
+      window.location="chat.html?username="+username;
+    },
+    error:function(){
+      alert("註冊失敗！再試一次");
+      window.location="mbti.html?username="+username;
+    },
+   });
+  }
+  var username="";
+  function MyAutoRun(){ 
+    var url = window.location.search
+    username = url.split("?username=")[1]
+    console.log(username)
+
+　　} 
+  //頁面加載自動執行此function
+　window.onload=MyAutoRun();
+
+  console.log(answer);
+        //document.getElementById("email").addEventListener("click", GFGfun); 
+        //function GFGfun() { 
+        //    var x = document.getElementById("email"); 
+        //    x.value = x.value.toLowerCase(); 
+        //    } 
+    </script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"/> -->
+  <script src="js/main.js"></script>
+  <title>聊癒療鬱</title>
+</head>
+<body>
+  <!-- <div class="wrapper"> -->
+    <div class="icondiv" style="text-align: center;">
+      <img src="./img/cat.png" style="height: 180px; width: 180px;">
+    <section class="form login">
+      <!-- <header>聊癒療鬱</header> -->
+      <form action="php/login.php" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit = "return returnUserName()">
+        <div class="error-text"></div>
+        <div class="field input">
+          <input type="text" name="username" autocomplete="username" placeholder="暱稱" onkeyup="this.value=this.value.replace(/[^\w_]/g,'');" id="username" required style="background-color: #fdf6f2; width: 270px; height: 50px; text-align: center;">
+        </div>
+        <div class="field input">
+          <input id="password" type="password" name="password" autocomplete="current-password" placeholder="密碼" onkeyup="this.value=this.value.replace(/[^\w_]/g,'');" required style="background-color: #fdf6f2; width: 270px; height: 50px; text-align: center; margin-top: 20px;">
+            <i id="checkEye" class="fas fa-eye" onclick="hideShowPsw()"></i>
+        </div>
+        <div class="field button" style="align-items:center; justify-content:center">
+          <input type="submit" name="signin" value="登入" style="background: #f7d4c0; border-radius: 50px; 
+    color: #322E2E; width:100px; padding:0;  margin-top: 20px; font-weight:bold;">
+        </div>
+      </form>
+      <div class="link"><a href="register.html">註冊帳號</a></div>
+    </section>
+    </div>
+  <!-- </div> -->
+  
+  <script src="javascript/pass-show-hide.js"></script>
+  <script src="javascript/login.js"></script>
+  <script type="text/javascript">
+// 這裡使用最原始的js語法實現，可對應換成jquery語法進行邏輯控制
+var demoInput = document.getElementById("password");
+//隱藏text block，顯示password block
+function hideShowPsw(){
+if (demoInput.type == "password") {
+  demoInput.type = "text";
+  }else {
+  demoInput.type = "password";
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/> <!-- 密碼眼睛 -->
+  <title>聊癒療鬱</title>
+</head>
+<body>
+  <div class="wrapper">
+    <a href="./main.html"><img  src="./img/return.png" style="height: 25px; width: 25px;"></a>
+    <section class="form signup" style="">
+      <header>註冊</header>
+      <form action="php/register.php" method="POST" enctype="multipart/form-data" autocomplete="off">
+        <div class="error-text"></div>
+          <div class="field input">
+            <!-- <label>暱稱</label> -->
+            <input type="text" name="username" placeholder="暱稱" autocomplete="username" onkeyup="this.value=this.value.replace(/[^\w_]/g,'');" minlength=2 maxlength=15 required style="background-color: #fdf6f2; width: 270px; height: 50px; text-align: center;">
+          </div>
+        <div class="field input">
+          <!-- <label>密碼</label> -->
+          <input id="password" type="password" name="password" placeholder="密碼" autocomplete="new-password" minlength=8 required style="background-color: #fdf6f2; width: 270px; height: 50px; text-align: center;">
+          <i id="checkEye" class="fas fa-eye" onclick="hideShowPsw()" style="position: absolute; top: 25px; right: 10px;"></i>
+          <!-- <i class="fas fa-eye"></i> -->
+        </div>
+        <div class="field input">
+          <!-- <label>確認密碼</label> -->
+          <input id="checkpassword" type="password" name="checkpassword" placeholder="確認密碼"  autocomplete="new-password" minlength=8 required style="background-color: #fdf6f2; width: 270px; height: 50px; text-align: center;">
+          <i id="checkEye2" class="fas fa-eye" onclick="hideShowCheckPsw()" style="position: absolute; top: 25px; right: 10px;"></i>
+          <!-- <i class="fas fa-eye"></i> -->
+        </div>
+          <div class="field input">
+            <select id="group" name="sex" style="font-size: 16px; background-color: #fdf6f2; width: 270px; height: 50px; text-align: center;">
+                <option value="男生">男生</option>
+                <option value="女生">女生</option>
+            </select>
+            <!-- <input type="text"  placeholder="性別" list="sexlist"required style="background-color: #fdf6f2; width: 270px; height: 50px; text-align: center;"> -->
+          </div>
+          <div class="field input">
+            <input type="number" name="age" placeholder="年齡" max="60" min="15"required style="background-color: #fdf6f2; width: 270px; height: 50px; text-align: center;">
+          </div>
+          <div class="field input">
+            <!-- <label>提示問題</label> -->
+            <input type="text" name="question" placeholder="提示問題" required style="background-color: #fdf6f2; width: 270px; height: 50px; text-align: center;">
+          </div>
+          <div class="field input">
+            <!-- <label>提示問題答案</label> -->
+            <input type="text" name="answer" placeholder="提示問題答案" required style="background-color: #fdf6f2; width: 270px; height: 50px; text-align: center;">
+          </div>
+        <div class="field button" style="align-items:center; justify-content:center">
+          <input type="submit" name="submit" value="送出" required style="background: #f7d4c0; border-radius: 50px; 
+    color: #322E2E; width:100px; padding:0;  margin-top: 20px; font-weight:bold;">
+        </div>
+      </form>
+      <div class="link">已經註冊了嗎?<a href="main.html"> 登入</a></div>
+    </section>
+  </div>
+</html>
+
+<script type="text/javascript">
+// 這裡使用最原始的js語法實現，可對應換成jquery語法進行邏輯控制
+var demoInput = document.getElementById("password");
+//隱藏text block，顯示password block
+function hideShowPsw(){
+if (demoInput.type == "password") {
+  demoInput.type = "text";
+  }else {
+  demoInput.type = "password";
+  }
+}
+var demoInput2 = document.getElementById("checkpassword");
+function hideShowCheckPsw(){
+if (demoInput2.type == "password") {
+  demoInput2.type = "text";
+  }else {
+  demoInput2.type = "password";
+  }
+}
+</script>
